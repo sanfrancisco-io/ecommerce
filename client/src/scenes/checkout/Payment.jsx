@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, TextField } from '@mui/material';
 
-const Peyment = ({ values, touched, errors, handleBlur, handleChange }) => {
+const Payment = ({ values, touched, errors, handleBlur, handleChange }) => {
     return (
         <Box m='30px 0'>
             {/* Contact info */}
@@ -48,4 +48,4 @@ const Peyment = ({ values, touched, errors, handleBlur, handleChange }) => {
     );
 };
 
-export default Peyment;
+export default Payment;

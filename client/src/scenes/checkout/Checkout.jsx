@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import Shipping from './Shipping';
 import { shades } from '../../theme';
-import Peyment from './Peyment';
+import Payment from './Payment';
 import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe(
@@ -124,10 +124,9 @@ const Checkout = () => {
 
         const response = await fetch('http://localhost:1337/api/orders', {
             method: 'POST',
-            headers: { 'Content-type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(requestBody),
         });
-
         const session = await response.json();
         await stripe.redirectToCheckout({
             sessionId: session.id,
@@ -146,7 +145,7 @@ const Checkout = () => {
                     <StepLabel>Billing</StepLabel>
                 </Step>
                 <Step>
-                    <StepLabel>Peyment</StepLabel>
+                    <StepLabel>Payment</StepLabel>
                 </Step>
             </Stepper>
             <Box>
@@ -176,7 +175,7 @@ const Checkout = () => {
                                 />
                             )}
                             {isSecondStep && (
-                                <Peyment
+                                <Payment
                                     values={values}
                                     errors={errors}
                                     touched={touched}
@@ -222,9 +221,6 @@ const Checkout = () => {
                                         border: 0,
                                         padding: '15px 40px',
                                     }}
-                                    onClick={() =>
-                                        setActiveStep(activeStep - 1)
-                                    }
                                 >
                                     {isFirstStep ? 'Next' : 'Place Order'}
                                 </Button>
